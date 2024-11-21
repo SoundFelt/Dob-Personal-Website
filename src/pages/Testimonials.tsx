@@ -1,12 +1,8 @@
-import { useState } from 'react';
 import Marquee from 'react-fast-marquee';
-import logo from '../assets/logo.png';
 import { IoMusicalNote } from "react-icons/io5";
 import { useWindowSize } from '../hooks/useWindowSize';
 
 const Testimonials = ({ width }: { width: number }) => {
-    const [activeSlide, setActiveSlide] = useState(0);
-
     const windowSize = useWindowSize();
 
     const TESTIMONIALS = [

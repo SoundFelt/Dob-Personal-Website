@@ -7,7 +7,6 @@ import { MdLibraryMusic } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Spin as Hamburger } from 'hamburger-react'
-import Dob2 from '../assets/dob2.jpg';
 
 const Navbar = ({ pages, width }: { pages: { key: string, value: string, href: string }[], width: number }) => {
     const navigate = useNavigate();

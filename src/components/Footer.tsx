@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 import { FaSquareFacebook } from "react-icons/fa6";
 import { SiInstagram } from "react-icons/si";

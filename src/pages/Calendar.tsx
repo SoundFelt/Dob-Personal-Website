@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { CTAButton } from '../components/Navbar';
-import { CALENDAR_DATES } from '../data.js';
+import { CALENDAR_DATES } from '../data.ts'; 
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import styled from 'styled-components';
@@ -15,9 +15,9 @@ const Calendar = () => {
     const [viewAll, setViewAll] = useState(false);
 
     const upcoming = CALENDAR_DATES.filter(event => moment(event.date, 'MM/DD/YY').isAfter(moment()))
-        .sort((a, b) => moment(a, 'MM/DD/YY').toDate() - moment(b, 'MM/DD/YY').toDate());
+        .sort((a, b) => moment(a.date, 'MM/DD/YY').valueOf() - moment(b.date, 'MM/DD/YY').valueOf());
 
-    const allDates = CALENDAR_DATES.sort((a, b) => moment(a, 'MM/DD/YY').toDate() - moment(b, 'MM/DD/YY').toDate());
+    const allDates = CALENDAR_DATES.sort((a, b) => moment(a.date, 'MM/DD/YY').valueOf() - moment(b.date, 'MM/DD/YY').valueOf());
 
     const windowSize = useWindowSize();
 
@@ -54,7 +54,7 @@ const Calendar = () => {
                     </PastPerformancesButton>
                     <div style={{ display: 'flex', width: '100%', flexDirection: 'column', overflowY: 'auto', height: '100%'}}>
                         {(viewAll ? allDates : upcoming).map(event => {
-                            const firstUpcoming = viewAll ? allDates.find(event => moment(event.date, 'MM/DD/YY').isAfter(moment())).date === event.date : null;
+                            const firstUpcoming = viewAll ? allDates?.find(event => moment(event.date, 'MM/DD/YY').isAfter(moment()))?.date === event.date : null;
                             const lastPast = viewAll ? allDates.filter(event => moment(event.date, 'MM/DD/YY').isBefore(moment()))
                                 .sort((a, b) => moment(a.date).isBefore(moment(b.date)) ? 1 : -1)[0].date === event.date : null;
 
